@@ -37,6 +37,6 @@ class Sheet extends Model
     }
 
     public function sheetAnswers() {
-        return $this->hasMany(FormSheetAnswer::class, 'type_question_id', 'id');
+        return $this->hasMany(SheetAnswer::class, 'type_question_id', 'id');
     }
 }

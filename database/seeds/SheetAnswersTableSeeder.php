@@ -46,7 +46,7 @@ class SheetAnswersTableSeeder extends Seeder
       SheetAnswer::create([
         'sheet_id' => $sheet->id,
         'type_question_id' => $type_question->id,
-        'answer' => $type_question->question
+        'answer' => $type_question
       ]);
     }
 }

@@ -22,7 +22,12 @@ class SheetAnswer extends Model
     'answer' => 'array'
   ];
 
-public function formSheet() {
+  public function formSheet() {
     return $this->belongsTo(FormSheet::class);
+  }
+
+  public function typeQuestions()
+  {
+    return $this->hasMany(typeQuestions::class);
   }
 }

@@ -23,7 +23,7 @@ const mutations = {
   },
 
   addSheet: (state, sheet) => {
-    state.items.push(sheet)
+    state.items.push(sheet);
   }
 };
 
@@ -50,15 +50,17 @@ const actions = {
 
   saveSheet: ({ commit }, sheet) => {
     return new Promise((resolve, reject) => {
-      axios.post(`${BASE_URL}/api/sheets/create`, sheet)
+      axios
+        .post(`${BASE_URL}/api/sheets/create`, sheet)
         .then(response => {
-          commit('addSheet', response.data.sheet || {});
+          commit("addSheet", response.data.sheet || {});
 
           resolve(response);
-        }).catch(error => {
+        })
+        .catch(error => {
           reject(error);
 
-          commit('setSheetStatusError');
+          commit("setSheetStatusError");
         });
     });
   }
@@ -66,6 +68,12 @@ const actions = {
 
 const getters = {
   allSheets: state => state.items,
+  allSheetsAnswers: state => {
+    return state.items.reduce(
+      (array, item) => array.concat(item.sheet_answers),
+      []
+    );
+  },
   countSheets: state => state.items.length,
   sheetStatus: state => state.status
 };

@@ -35,6 +35,7 @@ class SheetController extends Controller
         'user_id' => $sheet->user_id,
         'form_id' => $sheet->form_id,
         'title' => $sheet->title,
+        'sheet_answers' => [],
         'created_at' => $sheet->created_at
       ]
     ]);

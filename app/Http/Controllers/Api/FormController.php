@@ -82,6 +82,8 @@ class FormController extends Controller
             ->whereFormId($form_id)
             ->get();
 
+        $sheets->load(['sheetAnswers:id,sheet_id,type_question_id,answer']);
+
         return response()->json([
             'sheets' => $sheets,
         ]);
